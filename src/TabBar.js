@@ -56,6 +56,7 @@ export default class TabBar extends Component<DefaultProps, Props, void> {
     renderIndicator: PropTypes.func,
     tabStyle: View.propTypes.style,
     style: View.propTypes.style,
+    deSelectOpacity: PropTypes.number,
   };
 
   static defaultProps = {
@@ -76,7 +77,7 @@ export default class TabBar extends Component<DefaultProps, Props, void> {
       <View style={[ styles.tabbar, this.props.style ]}>
         {routes.map((route, i) => {
           const focused = index === i;
-          const outputRange = inputRange.map(inputIndex => inputIndex === i ? 1 : 0.7);
+          const outputRange = inputRange.map(inputIndex => inputIndex === i ? 1 : (this.props.deSelectOpacity || 0.7));
           const opacity = position.interpolate({
             inputRange,
             outputRange,
