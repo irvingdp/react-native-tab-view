@@ -42,7 +42,7 @@ export default class TabViewPage extends Component<void, Props, void> {
   static StyleInterpolator = TabViewStyleInterpolator;
 
   shouldComponentUpdate(nextProps: Props, nextState: void) {
-    return shallowCompare(this, nextProps, nextState);
+    return !shallowCompare(this, nextProps, nextState);
   }
 
   render() {
